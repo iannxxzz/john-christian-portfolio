@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button"
 import { motion } from "motion/react"
 
 import { socialLinks } from "@/constants"
-import { ThemeToggle } from "./ThemeToggle"
+
 
 export const Profile = () => {
 return ( <aside

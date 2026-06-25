@@ -5,7 +5,7 @@ import { projectsData } from "@/constants"
 
 import { SectionHeader } from "@/components/SectionHeader"
 import { ProjectCard } from "@/components/ProjectCard"
-import { ThemeToggle } from "@/components/ThemeToggle" 
+
 
 export const Projects = () => {
   const [activeFilter, setActiveFilter] = useState("Featured")
