@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button"
 import { motion } from "motion/react"
 
 import { socialLinks } from "@/constants"
+import { ThemeToggle } from "./ThemeToggle"
 
 export const Profile = () => {
 return ( <aside
@@ -11,10 +12,9 @@ return ( <aside
                 {/* Header */}
                 <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3">
                     <div>
-                        <h1 className="text-2xl sm:text-3xl font-bold">
+                        <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white">
                         John Christian
                         </h1>
-
                         <p className="mt-2 text-xs sm:text-sm text-neutral-400">
                         Developer • Software QA • Data Analyst
                         </p>
@@ -31,6 +31,8 @@ return ( <aside
                             </span>
                         Available
                     </motion.div>
+                    
+                  
 
                 </div>
 

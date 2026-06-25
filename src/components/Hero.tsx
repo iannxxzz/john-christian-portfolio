@@ -3,7 +3,7 @@ import { useState } from "react"
 import { fadeUp, staggerContainer } from "@/lib/animations"
 import { Button } from "@/components/ui/button"
 import { SparkleIcon, FileText } from "lucide-react"
-import { ResumeModal } from "@/components/ResumeModal"
+
 
 
 
@@ -26,10 +26,8 @@ export const Hero = () => {
                 <Button variant="outline" onClick={() => setResumeOpen(true)} className="gap-2">
                     <FileText className="h-4 w-4" />
                     View Resume
-                    
                 </Button>
             </motion.div>
-            <ResumeModal open={resumeOpen} onClose={() => setResumeOpen(false)} />
 
         </motion.section>
     )

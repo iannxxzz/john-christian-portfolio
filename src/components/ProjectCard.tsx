@@ -1,6 +1,5 @@
 import { motion } from "motion/react"
 import { ArrowUpRight } from "lucide-react"
-
 import type { ProjectType } from "@/types"
 
 export const ProjectCard = ({
@@ -18,64 +17,94 @@ animate={{ opacity: 1, y: 0 }}
 transition={{ duration: 0.35 }}
 className="
 group
-h-[450px]
+relative
 overflow-hidden
 rounded-3xl
 border
 border-neutral-800
 bg-neutral-900
-flex
-flex-col
-transition-all
-duration-300
-hover:-translate-y-2
-hover:border-primary/50
-hover:shadow-xl
-hover:shadow-primary/10
+h-[300px]
+cursor-pointer
 "
 >
-{/* Image Section */} <div className="h-[55%] overflow-hidden"> <img
-       src={imgSrc}
-       alt={title}
-       className="
-         h-full
-         w-full
-         object-cover
-         transition-transform
-         duration-700
-         group-hover:scale-105
-       "
-     /> </div>
+{/* Background Image */} <img
+     src={imgSrc}
+     alt={title}
+     className="
+       absolute
+       inset-0
+       h-full
+       w-full
+       object-cover
+       transition-all
+       duration-500
+       group-hover:scale-110
+       group-hover:blur-md
+       group-hover:brightness-50
+     "
+   />
 
-  {/* Content Section */}
-  <div className="h-[45%] p-5 flex flex-col">
-    <span className="w-fit rounded-full bg-primary/10 px-3 py-1 text-xs font-medium text-primary">
-      {category}
-    </span>
 
-    <h3 className="mt-3 text-lg font-bold text-white">
+  {/* Category Badge */}
+  <div
+    className="
+      absolute
+      top-4
+      left-4
+      z-10
+      rounded-full
+      bg-black/60
+      px-3
+      py-1
+      text-xs
+      font-medium
+      text-primary
+      backdrop-blur-md
+    "
+  >
+    {category}
+  </div>
+
+  {/* Content Overlay */}
+  <div
+    className="
+      absolute
+      inset-0
+      z-20
+      flex
+      flex-col
+      justify-end
+      p-6
+      opacity-0
+      translate-y-6
+      transition-all
+      duration-500
+      group-hover:opacity-100
+      group-hover:translate-y-0
+    "
+  >
+    <h3 className="text-xl font-bold text-white">
       {title}
     </h3>
 
-    <p className="mt-2 text-sm text-neutral-400 line-clamp-3">
+    <p className="mt-2 text-sm text-neutral-200 line-clamp-3">
       {description}
     </p>
 
-    <div className="mt-4 mb-4 flex flex-wrap gap-2">
+    <div className="mt-4 flex flex-wrap gap-2">
       {tags.map((tag) => (
         <span
           key={tag}
           className="
             rounded-md
             border
-            border-neutral-700
+            border-white/20
+            bg-white/10
             px-2
             py-1
             text-xs
-            text-neutral-300
-            transition-colors
-            hover:border-primary
-            hover:text-primary
+            text-white
+            backdrop-blur-sm
           "
         >
           {tag}
@@ -88,7 +117,7 @@ hover:shadow-primary/10
       target="_blank"
       rel="noopener noreferrer"
       className="
-        mt-auto
+        mt-5
         inline-flex
         w-fit
         items-center
@@ -101,10 +130,7 @@ hover:shadow-primary/10
         font-semibold
         text-black
         transition-all
-        duration-300
         hover:scale-105
-        hover:shadow-lg
-        hover:shadow-primary/30
       "
     >
       View Project
@@ -112,7 +138,6 @@ hover:shadow-primary/10
     </a>
   </div>
 </motion.div>
-
 
 )
 }
