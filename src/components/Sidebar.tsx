@@ -16,7 +16,7 @@ export const Sidebar = () => {
     return <>
     <Sheet>
         <SheetTrigger asChild>
-            <Button variant={'ghost'} size={'icon'} 
+            <Button aria-label="Open Menu" variant={'ghost'} size={'icon'} 
             className='m-4 fixed top-4 right-4 z-50 border-2 hover:border-primary bg-neutral-800 py-5 px-5 rounded-2xl hover:text-primary cursor-pointer'> 
                 <MenuIcon size={30} /> 
             </Button>
@@ -28,7 +28,8 @@ export const Sidebar = () => {
                 {navLinks.map((link) =>{
                     const Icon = link.icon
 
-                    return<a 
+                    return <a 
+                    
                     href={link.link} 
                     key={link.label} 
                     onClick={() => setActive(link.link)} 
@@ -48,7 +49,7 @@ export const Sidebar = () => {
                         const Icon = social.icon
 
                         return(
-                            <a key={i} href={social.link} className="hover:text-primary border-2 border-neutral-500 p-2 rounded-2xl hover:border-primary transition duration-200">
+                            <a aria-label={social.label} key={i} href={social.link} className="hover:text-primary border-2 border-neutral-500 p-2 rounded-2xl hover:border-primary transition duration-200">
                                 <Icon className="size-5" />
                             </a>
                         )

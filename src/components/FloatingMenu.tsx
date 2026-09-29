@@ -28,12 +28,13 @@ export const FloatingMenu = () => {
             return () => observer.disconnect()
             }, [])
 
-    return ( <div className="fixed right-10 top-1/2 -translate-y-1/2 bg-black border border-neutral-500 rounded-2xl z-10 hidden lg:flex flex-col items-center py-4">
+    return ( <nav aria-label="Floating Navigation" className="fixed right-10 top-1/2 -translate-y-1/2 bg-black border border-neutral-500 rounded-2xl z-10 hidden lg:flex flex-col items-center py-4">
         {navLinks.map((link) => {
             const Icon = link.icon
 
             return (
                 <a
+                    aria-label={link.label}
                     key={link.label}
                     href={link.link}
                     onClick={() => setActive(link.link)}
@@ -53,6 +54,6 @@ export const FloatingMenu = () => {
                     </a>
             )
         })}
-    </div>
+    </nav>
     )
 }

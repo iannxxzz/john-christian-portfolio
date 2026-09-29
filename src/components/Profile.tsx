@@ -15,8 +15,8 @@ return ( <aside
                         <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white">
                         John Christian
                         </h1>
-                        <p className="mt-2 text-xs sm:text-sm text-neutral-400">
-                        Developer • Software QA • Data Analyst
+                        <p className="mt-2 text-[5px] sm:text-sm text-neutral-400">
+                        Developer • QA • Data Analyst
                         </p>
                     </div>
 

@@ -56,22 +56,22 @@ const socialLinks: LinksType[] = [
   {
     icon: FaFacebook,
     label: 'Facebook',
-    link: '/#',
+    link: '...',
   },
   {
     icon: FaInstagram,
     label: 'Instagram',
-    link: '/#',
+    link: '...',
   },
   {
     icon: FaTwitter,
     label: 'Twitter',
-    link: '/#',
+    link: '...',
   },
   {
     icon: FaYoutube,
     label: 'Youtube',
-    link: '/#',
+    link: '...',
   },
 ];
 
