@@ -10,6 +10,7 @@ import { Resume } from "@/components/Resume"
 import { Contact } from "@/components/Contact"
 import { ScrollProgress } from "@/components/ScrollProgress"
 import { BackToTop } from "@/components/BackToTop"
+import { AIChatbot } from "@/components/AIChatbot"
 
 // }
 export const App = () => {
@@ -38,6 +39,8 @@ export const App = () => {
       <Services />
       <Resume />
       <Contact />
+
+      <AIChatbot />
     </main>
   ) 
 }

@@ -33,6 +33,7 @@ import {
   FaInstagram,
   FaTwitter,
   FaYoutube,
+  FaLinkedin,
 } from "react-icons/fa";
 
 const navLinks: LinksType[] = [
@@ -56,7 +57,7 @@ const socialLinks: LinksType[] = [
   {
     icon: FaFacebook,
     label: 'Facebook',
-    link: '...',
+    link: 'https://www.facebook.com/johnxtian11',
   },
   {
     icon: FaInstagram,
@@ -72,6 +73,11 @@ const socialLinks: LinksType[] = [
     icon: FaYoutube,
     label: 'Youtube',
     link: '...',
+  },
+  {
+    icon: FaLinkedin,
+    label: 'LinkedIn',
+    link: 'https://www.linkedin.com/in/john-christian-atienza/',
   },
 ];
 
