@@ -33,8 +33,8 @@ export const BackToTop = () => {
           onClick={scrollToTop}
           className="
                     fixed
-                    bottom-6
-                    right-6
+                    bottom-24
+                    right-7
                     z-50
                     flex
                     h-12
