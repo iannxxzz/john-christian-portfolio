@@ -1,4 +1,6 @@
 import { useState } from "react"
+import ReactMarkdown from "react-markdown"
+import remarkGfm from "remark-gfm"
 import {
     Bot,
     Send,
@@ -355,17 +357,72 @@ export const AIChatbot = () => {
                                                     : "justify-start"
                                             }`}
                                         >
-                                            <div
-                                                className={`max-w-[82%] rounded-2xl px-3 py-2 text-sm leading-relaxed ${
-                                                    message.role ===
-                                                    "user"
+                                           <div
+                                                className={`max-w-[82%] min-w-0 rounded-2xl px-3 py-2 text-sm leading-relaxed ${
+                                                    message.role === "user"
                                                         ? "bg-white text-black"
                                                         : "border border-white/10 bg-white/[0.06] text-white/80"
                                                 }`}
                                             >
-                                                {
+                                                {message.role === "assistant" ? (
+                                                    <div className="min-w-0 break-words">
+                                                        <ReactMarkdown
+                                                            remarkPlugins={[remarkGfm]}
+                                                            components={{
+                                                                p: ({ children }) => (
+                                                                    <p className="mb-2 last:mb-0">
+                                                                        {children}
+                                                                    </p>
+                                                                ),
+
+                                                                strong: ({ children }) => (
+                                                                    <strong className="font-semibold text-white">
+                                                                        {children}
+                                                                    </strong>
+                                                                ),
+
+                                                                ol: ({ children }) => (
+                                                                    <ol className="my-2 ml-5 list-decimal space-y-2">
+                                                                        {children}
+                                                                    </ol>
+                                                                ),
+
+                                                                ul: ({ children }) => (
+                                                                    <ul className="my-2 ml-5 list-disc space-y-1.5">
+                                                                        {children}
+                                                                    </ul>
+                                                                ),
+
+                                                                li: ({ children }) => (
+                                                                    <li className="pl-1">
+                                                                        {children}
+                                                                    </li>
+                                                                ),
+
+                                                                a: ({ href, children }) => (
+                                                                    <a
+                                                                        href={href}
+                                                                        target="_blank"
+                                                                        rel="noopener noreferrer"
+                                                                        className="break-all text-white underline underline-offset-2 transition-opacity hover:opacity-70"
+                                                                    >
+                                                                        {children}
+                                                                    </a>
+                                                                ),
+
+                                                                code: ({ children }) => (
+                                                                    <code className="rounded bg-white/10 px-1.5 py-0.5 text-[0.9em] text-white">
+                                                                        {children}
+                                                                    </code>
+                                                                ),
+                                                            }}
+                                                        >
+                                                            {message.content}
+                                                        </ReactMarkdown>
+                                                    </div>
+                                                ) : (
                                                     message.content
-                                                }
+                                                )}
                                             </div>
                                         </motion.div>
                                     )
