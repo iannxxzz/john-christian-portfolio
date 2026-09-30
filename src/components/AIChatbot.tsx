@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import ReactMarkdown from "react-markdown"
 import remarkGfm from "remark-gfm"
 import {
@@ -26,14 +26,47 @@ export const AIChatbot = () => {
     const [open, setOpen] = useState(false)
     const [input, setInput] = useState("")
     const [loading, setLoading] = useState(false)
+    const [showHint, setShowHint] = useState(false)
 
     const [messages, setMessages] = useState<Message[]>([
         {
             role: "assistant",
             content:
-                "Hey! 👋 I'm Jankristyan's portfolio assistant. Ask me anything about his skills, projects, experience, or services!",
+                "Hey! 👋 I'm Jankristyan's Portfolio Assistant. Ask me anything about his skills, projects, experience, services and status!",
         },
     ])
+
+    useEffect(() => {
+        if (open) {
+            setShowHint(false)
+            return
+        }
+
+        let hideTimeout: ReturnType<typeof setTimeout>
+        let interval: ReturnType<typeof setInterval>
+
+        const showHintMessage = () => {
+            setShowHint(true)
+
+            hideTimeout = setTimeout(() => {
+                setShowHint(false)
+            }, 3000)
+        }
+
+        const initialTimeout = setTimeout(() => {
+            showHintMessage()
+
+            interval = setInterval(() => {
+                showHintMessage()
+            }, 8000)
+        }, 2000)
+
+        return () => {
+            clearTimeout(initialTimeout)
+            clearTimeout(hideTimeout)
+            clearInterval(interval)
+        }
+    }, [open])
 
     const sendMessage = async () => {
         const trimmedInput = input.trim()
@@ -143,6 +176,11 @@ export const AIChatbot = () => {
         }
     }
 
+    const handleOpen = () => {
+        setShowHint(false)
+        setOpen(true)
+    }
+
     return (
         <>
             {/* Floating chatbot button */}
@@ -212,11 +250,42 @@ export const AIChatbot = () => {
                             }}
                         />
 
+                        {/* Floating hint */}
+                        <AnimatePresence>
+                            {showHint && (
+                                <motion.div
+                                    initial={{
+                                        opacity: 0,
+                                        y: 8,
+                                        scale: 0.95,
+                                    }}
+                                    animate={{
+                                        opacity: 1,
+                                        y: 0,
+                                        scale: 1,
+                                    }}
+                                    exit={{
+                                        opacity: 0,
+                                        y: 8,
+                                        scale: 0.95,
+                                    }}
+                                    transition={{
+                                        duration: 0.25,
+                                        ease: "easeOut",
+                                    }}
+                                    className="absolute bottom-[calc(100%+12px)] right-0 whitespace-nowrap rounded-xl border border-white/10 bg-black px-3 py-2 text-xs font-medium text-white shadow-xl"
+                                >
+                                    Hey! Questions? Ask me! 👋
+
+                                    <span className="absolute -bottom-1.5 right-5 h-3 w-3 rotate-45 border-r border-b border-white/10 bg-black" />
+                                </motion.div>
+                            )}
+                        </AnimatePresence>
+
+                        {/* Chatbot button */}
                         <motion.button
                             type="button"
-                            onClick={() =>
-                                setOpen(true)
-                            }
+                            onClick={handleOpen}
                             className="relative flex h-14 w-14 items-center justify-center rounded-full border border-white/10 bg-black text-white shadow-2xl"
                             whileHover={{
                                 scale: 1.06,
@@ -225,9 +294,7 @@ export const AIChatbot = () => {
                                 scale: 0.94,
                             }}
                         >
-                            <Bot
-                                size={22}
-                            />
+                            <Bot size={22} />
                         </motion.button>
                     </motion.div>
                 )}
@@ -327,9 +394,7 @@ export const AIChatbot = () => {
                                     }
                                     className="flex h-8 w-8 items-center justify-center rounded-full text-white/50 transition-colors hover:bg-white/10 hover:text-white"
                                 >
-                                    <X
-                                        size={17}
-                                    />
+                                    <X size={17} />
                                 </button>
                             </div>
 
@@ -357,67 +422,104 @@ export const AIChatbot = () => {
                                                     : "justify-start"
                                             }`}
                                         >
-                                           <div
+                                            <div
                                                 className={`max-w-[82%] min-w-0 rounded-2xl px-3 py-2 text-sm leading-relaxed ${
-                                                    message.role === "user"
+                                                    message.role ===
+                                                    "user"
                                                         ? "bg-white text-black"
                                                         : "border border-white/10 bg-white/[0.06] text-white/80"
                                                 }`}
                                             >
-                                                {message.role === "assistant" ? (
+                                                {message.role ===
+                                                "assistant" ? (
                                                     <div className="min-w-0 break-words">
                                                         <ReactMarkdown
-                                                            remarkPlugins={[remarkGfm]}
+                                                            remarkPlugins={[
+                                                                remarkGfm,
+                                                            ]}
                                                             components={{
-                                                                p: ({ children }) => (
+                                                                p: ({
+                                                                    children,
+                                                                }) => (
                                                                     <p className="mb-2 last:mb-0">
-                                                                        {children}
+                                                                        {
+                                                                            children
+                                                                        }
                                                                     </p>
                                                                 ),
 
-                                                                strong: ({ children }) => (
+                                                                strong: ({
+                                                                    children,
+                                                                }) => (
                                                                     <strong className="font-semibold text-white">
-                                                                        {children}
+                                                                        {
+                                                                            children
+                                                                        }
                                                                     </strong>
                                                                 ),
 
-                                                                ol: ({ children }) => (
+                                                                ol: ({
+                                                                    children,
+                                                                }) => (
                                                                     <ol className="my-2 ml-5 list-decimal space-y-2">
-                                                                        {children}
+                                                                        {
+                                                                            children
+                                                                        }
                                                                     </ol>
                                                                 ),
 
-                                                                ul: ({ children }) => (
+                                                                ul: ({
+                                                                    children,
+                                                                }) => (
                                                                     <ul className="my-2 ml-5 list-disc space-y-1.5">
-                                                                        {children}
+                                                                        {
+                                                                            children
+                                                                        }
                                                                     </ul>
                                                                 ),
 
-                                                                li: ({ children }) => (
+                                                                li: ({
+                                                                    children,
+                                                                }) => (
                                                                     <li className="pl-1">
-                                                                        {children}
+                                                                        {
+                                                                            children
+                                                                        }
                                                                     </li>
                                                                 ),
 
-                                                                a: ({ href, children }) => (
+                                                                a: ({
+                                                                    href,
+                                                                    children,
+                                                                }) => (
                                                                     <a
-                                                                        href={href}
+                                                                        href={
+                                                                            href
+                                                                        }
                                                                         target="_blank"
                                                                         rel="noopener noreferrer"
                                                                         className="break-all text-white underline underline-offset-2 transition-opacity hover:opacity-70"
                                                                     >
-                                                                        {children}
+                                                                        {
+                                                                            children
+                                                                        }
                                                                     </a>
                                                                 ),
 
-                                                                code: ({ children }) => (
+                                                                code: ({
+                                                                    children,
+                                                                }) => (
                                                                     <code className="rounded bg-white/10 px-1.5 py-0.5 text-[0.9em] text-white">
-                                                                        {children}
+                                                                        {
+                                                                            children
+                                                                        }
                                                                     </code>
                                                                 ),
                                                             }}
                                                         >
-                                                            {message.content}
+                                                            {
+                                                                message.content
+                                                            }
                                                         </ReactMarkdown>
                                                     </div>
                                                 ) : (
@@ -508,16 +610,13 @@ export const AIChatbot = () => {
                                         value={input}
                                         onChange={(event) =>
                                             setInput(
-                                                event.target
-                                                    .value
+                                                event.target.value
                                             )
                                         }
                                         onKeyDown={
                                             handleKeyDown
                                         }
-                                        disabled={
-                                            loading
-                                        }
+                                        disabled={loading}
                                         placeholder="Ask me anything..."
                                         className="min-w-0 flex-1 bg-transparent px-3 py-2 text-sm text-white outline-none placeholder:text-white/30 disabled:opacity-50"
                                     />
@@ -539,9 +638,7 @@ export const AIChatbot = () => {
                                         }}
                                         className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-white text-black transition-opacity disabled:cursor-not-allowed disabled:opacity-30"
                                     >
-                                        <Send
-                                            size={16}
-                                        />
+                                        <Send size={16} />
                                     </motion.button>
                                 </div>
                             </div>

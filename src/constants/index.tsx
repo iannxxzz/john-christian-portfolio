@@ -205,24 +205,28 @@ const services: ServiceType[] = [
     desc: 'Ensuring quality through thorough testing and validation.',
     projects: '32 Projects',
     icon: <ShieldCheck className='h-6 w-6 text-white' />,
+    skills: ['Manual Testing', 'Test Case Design', 'Regression Testing'],
   },
   {
     title: 'Application Support',
     desc: 'Providing reliable technical support and issue resolution.',
     projects: '47 Projects',
     icon: <Headset className='h-6 w-6 text-white' />,
+    skills: ['Troubleshooting', 'User Support', 'Incident Management'],
   },
   {
     title: 'Data Analysis & Reporting',
     desc: 'Transforming data into meaningful insights.',
     projects: '58 Projects',
     icon: <BarChart3 className='h-6 w-6 text-white' />,
+    skills: ['Data Cleaning', 'Data Visualization', 'Statistical Analysis'],
   },
   {
     title: 'Front-End Development',
     desc: 'Building responsive and user-friendly interfaces.',
     projects: '21 Projects',
     icon: <Code2 className='h-6 w-6 text-white' />,
+    skills: ['HTML', 'CSS', 'JavaScript', 'React', 'Tailwind CSS'],
   },
 ];
 
@@ -240,6 +244,30 @@ const statsData: StatsType[] = [
     label: 'Projects Done',
   },
 ];
+
+// const testimonials: TestimonialsType[] = [
+// //   {
+// //     name: 'Alex Tomato',
+// //     role: 'Brand Manager at Instant Design',
+// //     image: 'https://randomuser.me/api/portraits/men/32.jpg',
+// //     text: 'Working with David was an absolute pleasure. His attention to detail, creative insights, and ability to translate complex ideas into stunning visuals truly set him apart. He consistently went above and beyond to ensure the project exceeded expectations.',
+// //     link: '#',
+// //   },
+// //   {
+// //     name: 'Sara Bloom',
+// //     role: 'Founder at Bloom Agency',
+// //     image: 'https://randomuser.me/api/portraits/women/65.jpg',
+// //     text: 'David brought my brand vision to life better than I could have imagined. He is not only professional and highly skilled but also incredibly responsive and collaborative. Every aspect of the project was handled with precision and creativity.',
+// //     link: '#',
+// //   },
+// //   {
+// //     name: 'John Park',
+// //     role: 'CEO at PixelFlow',
+// //     image: 'https://randomuser.me/api/portraits/men/45.jpg',
+// //     text: 'From UI/UX design to front-end implementation, David handled every detail flawlessly. His problem-solving skills, innovative approach, and dedication made the entire process smooth and enjoyable. I would highly recommend him for any design-driven project.',
+// //     link: '#',
+// //   },
+// // ];
 
 export {
   socialLinks,

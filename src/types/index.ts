@@ -21,6 +21,7 @@ export type ServiceType = {
   title: string;
   desc: string;
   projects: string;
+  skills: string[];
   icon: JSX.Element;
 };
 
