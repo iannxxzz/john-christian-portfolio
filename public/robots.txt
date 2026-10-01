@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://john-christian-portfolio.vercel.app/sitemap.xml

@@ -1,12 +1,15 @@
 import { useEffect, useState } from "react"
+
 import ReactMarkdown from "react-markdown"
 import remarkGfm from "remark-gfm"
+
 import {
     Bot,
     Send,
     X,
     Loader2,
 } from "lucide-react"
+
 import {
     motion,
     AnimatePresence,
@@ -203,6 +206,7 @@ export const AIChatbot = () => {
                     >
                         {/* Ambient glow */}
                         <motion.div
+                            aria-hidden="true"
                             className="absolute inset-[-14px] rounded-full bg-white/10 blur-xl"
                             animate={{
                                 scale: loading
@@ -223,6 +227,7 @@ export const AIChatbot = () => {
 
                         {/* Wave ring 1 */}
                         <motion.div
+                            aria-hidden="true"
                             className="absolute inset-[-6px] rounded-full border border-white/10"
                             animate={{
                                 scale: [1, 1.25, 1],
@@ -237,6 +242,7 @@ export const AIChatbot = () => {
 
                         {/* Wave ring 2 */}
                         <motion.div
+                            aria-hidden="true"
                             className="absolute inset-[-6px] rounded-full border border-white/10"
                             animate={{
                                 scale: [1, 1.4, 1],
@@ -277,7 +283,10 @@ export const AIChatbot = () => {
                                 >
                                     Hey! Questions? Ask me! 👋
 
-                                    <span className="absolute -bottom-1.5 right-5 h-3 w-3 rotate-45 border-r border-b border-white/10 bg-black" />
+                                    <span
+                                        aria-hidden="true"
+                                        className="absolute -bottom-1.5 right-5 h-3 w-3 rotate-45 border-r border-b border-white/10 bg-black"
+                                    />
                                 </motion.div>
                             )}
                         </AnimatePresence>
@@ -286,6 +295,7 @@ export const AIChatbot = () => {
                         <motion.button
                             type="button"
                             onClick={handleOpen}
+                            aria-label="Open AI portfolio assistant"
                             className="relative flex h-14 w-14 items-center justify-center rounded-full border border-white/10 bg-black text-white shadow-2xl"
                             whileHover={{
                                 scale: 1.06,
@@ -294,7 +304,10 @@ export const AIChatbot = () => {
                                 scale: 0.94,
                             }}
                         >
-                            <Bot size={22} />
+                            <Bot
+                                size={22}
+                                aria-hidden="true"
+                            />
                         </motion.button>
                     </motion.div>
                 )}
@@ -326,6 +339,7 @@ export const AIChatbot = () => {
                     >
                         {/* External ambient aura */}
                         <motion.div
+                            aria-hidden="true"
                             className="pointer-events-none absolute inset-[-18px] rounded-[28px] bg-white/[0.04] blur-2xl"
                             animate={{
                                 scale: loading
@@ -346,6 +360,7 @@ export const AIChatbot = () => {
 
                         {/* Wave ring */}
                         <motion.div
+                            aria-hidden="true"
                             className="pointer-events-none absolute inset-[-8px] rounded-[28px] border border-white/[0.08]"
                             animate={{
                                 scale: loading
@@ -365,11 +380,19 @@ export const AIChatbot = () => {
                         />
 
                         {/* Chat panel */}
-                        <div className="relative flex h-[500px] flex-col overflow-hidden rounded-2xl border border-white/10 bg-black shadow-2xl">
+                        <div
+                            className="relative flex h-[500px] flex-col overflow-hidden rounded-2xl border border-white/10 bg-black shadow-2xl"
+                            role="dialog"
+                            aria-label="Jankristyan AI Portfolio Assistant"
+                            aria-modal="false"
+                        >
                             {/* Header */}
                             <div className="flex items-center justify-between border-b border-white/10 px-4 py-3">
                                 <div className="flex items-center gap-3">
-                                    <div className="flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-white/[0.06]">
+                                    <div
+                                        aria-hidden="true"
+                                        className="flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-white/[0.06]"
+                                    >
                                         <Bot
                                             size={18}
                                             className="text-white"
@@ -392,14 +415,23 @@ export const AIChatbot = () => {
                                     onClick={() =>
                                         setOpen(false)
                                     }
+                                    aria-label="Close AI portfolio assistant"
                                     className="flex h-8 w-8 items-center justify-center rounded-full text-white/50 transition-colors hover:bg-white/10 hover:text-white"
                                 >
-                                    <X size={17} />
+                                    <X
+                                        size={17}
+                                        aria-hidden="true"
+                                    />
                                 </button>
                             </div>
 
                             {/* Messages */}
-                            <div className="flex-1 space-y-3 overflow-y-auto p-4">
+                            <div
+                                role="log"
+                                aria-live="polite"
+                                aria-label="AI conversation"
+                                className="flex-1 space-y-3 overflow-y-auto p-4"
+                            >
                                 {messages.map(
                                     (
                                         message,
@@ -533,6 +565,8 @@ export const AIChatbot = () => {
                                 {/* Thinking indicator */}
                                 {loading && (
                                     <motion.div
+                                        role="status"
+                                        aria-label="AI is thinking"
                                         initial={{
                                             opacity: 0,
                                             y: 8,
@@ -547,9 +581,17 @@ export const AIChatbot = () => {
                                             <Loader2
                                                 size={14}
                                                 className="animate-spin"
+                                                aria-hidden="true"
                                             />
 
-                                            <div className="flex gap-1">
+                                            <span className="sr-only">
+                                                AI is thinking
+                                            </span>
+
+                                            <div
+                                                aria-hidden="true"
+                                                className="flex gap-1"
+                                            >
                                                 <motion.span
                                                     className="h-1 w-1 rounded-full bg-white/50"
                                                     animate={{
@@ -605,7 +647,15 @@ export const AIChatbot = () => {
                             {/* Input */}
                             <div className="border-t border-white/10 p-3">
                                 <div className="flex items-center gap-2 rounded-xl border border-white/10 bg-white/[0.04] p-1">
+                                    <label
+                                        htmlFor="ai-chat-input"
+                                        className="sr-only"
+                                    >
+                                        Ask the AI portfolio assistant
+                                    </label>
+
                                     <input
+                                        id="ai-chat-input"
                                         type="text"
                                         value={input}
                                         onChange={(event) =>
@@ -626,6 +676,7 @@ export const AIChatbot = () => {
                                         onClick={
                                             sendMessage
                                         }
+                                        aria-label="Send message"
                                         disabled={
                                             loading ||
                                             !input.trim()
@@ -638,7 +689,10 @@ export const AIChatbot = () => {
                                         }}
                                         className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-white text-black transition-opacity disabled:cursor-not-allowed disabled:opacity-30"
                                     >
-                                        <Send size={16} />
+                                        <Send
+                                            size={16}
+                                            aria-hidden="true"
+                                        />
                                     </motion.button>
                                 </div>
                             </div>

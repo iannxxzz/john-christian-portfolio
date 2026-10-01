@@ -38,17 +38,9 @@ import {
 
 const navLinks: LinksType[] = [
   { label: 'Home', link: '#hero', icon: Home },
-  {
-    label: 'Projects',
-    link: '#projects',
-    icon: Briefcase,
-  },
   { label: 'About', link: '#about', icon: User },
-  {
-    label: 'Services',
-    link: '#services',
-    icon: Settings,
-  },
+  { label: 'Services', link: '#services', icon: Settings },
+  { label: 'Projects', link: '#projects', icon: Briefcase },
   { label: 'Resume', link: '#resume', icon: FileText },
   { label: 'Contact', link: '#contact', icon: Mail },
 ];
@@ -62,17 +54,17 @@ const socialLinks: LinksType[] = [
   {
     icon: FaInstagram,
     label: 'Instagram',
-    link: '...',
+    link: 'https://www.instagram.com/jhnchrstn11',
   },
   {
     icon: FaTwitter,
     label: 'Twitter',
-    link: '...',
+    link: 'https://twitter.com/johnxtn11',
   },
   {
     icon: FaYoutube,
     label: 'Youtube',
-    link: '...',
+    link: 'https://www.youtube.com/@vlogstory-b4d',
   },
   {
     icon: FaLinkedin,
@@ -83,56 +75,64 @@ const socialLinks: LinksType[] = [
 
 const projectsData: ProjectType[] = [
   {
-  imgSrc: '/images/landing-page.png',
-  title: 'Restaurant Landing Page',
-  description: 'Responsive Restaurant Landing Page.',
-  category: 'Front-End',
-  tags: ['Landing Page', 'React', 'Tailwind'],
-  projectLink: 'https://food-biteiq.netlify.app/',
-  featured: true,
+    imgSrc: '/images/landing-page.png',
+    title: 'Restaurant Landing Page',
+    description:
+      'Responsive restaurant landing page built with React and Tailwind CSS, focused on creating a clean and user-friendly front-end experience.',
+    category: 'Front-End',
+    tags: ['Landing Page', 'React', 'Tailwind'],
+    projectLink: 'https://food-biteiq.netlify.app/',
+    featured: true,
   },
   {
     imgSrc: '/images/data-page.png',
     title: 'Hospital Dashboard',
-    description: 'Interactive Hospital Dashboard',
+    description:
+      'Interactive hospital dashboard created for data analysis and reporting using Microsoft Power BI.',
     category: 'Data Analysis',
-    tags: ['Dashboard', 'PowerBi'],
+    tags: ['Dashboard', 'Power BI'],
     projectLink: '',
     featured: true,
   },
   {
     imgSrc: '/images/QA-1.png',
     title: 'Test Case Sample',
-    description: 'Interactive Test Case Sample',
+    description:
+      'Software QA test case sample demonstrating manual testing, test case documentation, and User Acceptance Testing practices.',
     category: 'Software QA',
     tags: ['Manual QA', 'Test Case', 'UAT'],
-    projectLink: 'https://docs.google.com/spreadsheets/d/1P_n58js4aW7LpZ0H-h_KVAcKFLmnsss5EuH9BQzrWaY/edit?usp=sharing',
+    projectLink:
+      'https://docs.google.com/spreadsheets/d/1P_n58js4aW7LpZ0H-h_KVAcKFLmnsss5EuH9BQzrWaY/edit?usp=sharing',
     featured: true,
   },
   {
     imgSrc: '/images/QA-2.png',
     title: 'Order Management & Sales System',
-    description: 'Interactive Test Case Sample',
+    description:
+      'Software QA test case sample focused on manual testing, test case documentation, and User Acceptance Testing for an order management and sales system.',
     category: 'Software QA',
     tags: ['Manual QA', 'Test Case', 'UAT'],
-    projectLink: 'https://docs.google.com/spreadsheets/d/11LbLhudgqIenF3NoewDT9drN-f5jVhgl0vn-ESLEQq0/edit?usp=sharing',
+    projectLink:
+      'https://docs.google.com/spreadsheets/d/11LbLhudgqIenF3NoewDT9drN-f5jVhgl0vn-ESLEQq0/edit?usp=sharing',
     featured: false,
   },
   {
     imgSrc: '/images/landing-page-3.png',
     title: 'Construction Landing Page',
-    description: 'Responsive Construction Landing Page.',
+    description:
+      'Responsive construction website landing page built with HTML, CSS, and JavaScript.',
     category: 'Front-End',
-    tags: ['Landing Page', 'HTML', 'CSS','Javascript'],
+    tags: ['Landing Page', 'HTML', 'CSS', 'JavaScript'],
     projectLink: 'https://construction-jc.netlify.app/',
     featured: false,
   },
-   {
+  {
     imgSrc: '/images/landing-page-2.png',
     title: 'Med Landing Page',
-    description: 'Responsive Med landing page.',
+    description:
+      'Responsive medical website landing page built with HTML, CSS, and JavaScript.',
     category: 'Front-End',
-    tags: ['Landing Page', 'HTML', 'CSS','Javascript'],
+    tags: ['Landing Page', 'HTML', 'CSS', 'JavaScript'],
     projectLink: 'https://med-reach.netlify.app/',
     featured: false,
   },
@@ -162,7 +162,7 @@ const education: ExperienceType[] = [
 const experience: ExperienceType[] = [
   {
     year: '2022 – Present',
-    title: 'ATS II - Associate Technical Specialist',
+    title: 'ATS II - Associate Technical Specialist II',
     institute: 'Alliance Software Inc',
     desc: 'Cebu Business Park, Cebu City, Philippines',
   },
@@ -202,33 +202,56 @@ const tools: ToolsType[] = [
 const services: ServiceType[] = [
   {
     title: 'Software Quality Assurance',
-    desc: 'Ensuring quality through thorough testing and validation.',
+    desc: 'Ensuring software quality through manual testing, test case creation, User Acceptance Testing, validation, and bug identification.',
     projects: '32 Projects',
+    skills: [
+      'Manual Testing',
+      'Test Case Creation',
+      'UAT',
+      'Validation',
+      'Bug Identification',
+    ],
     icon: <ShieldCheck className='h-6 w-6 text-white' />,
-    skills: ['Manual Testing', 'Test Case Design', 'Regression Testing'],
   },
   {
     title: 'Application Support',
-    desc: 'Providing reliable technical support and issue resolution.',
+    desc: 'Providing reliable technical support through issue investigation, troubleshooting, system assistance, and problem resolution.',
     projects: '47 Projects',
+    skills: [
+      'Issue Investigation',
+      'Technical Support',
+      'Troubleshooting',
+      'System Assistance',
+    ],
     icon: <Headset className='h-6 w-6 text-white' />,
-    skills: ['Troubleshooting', 'User Support', 'Incident Management'],
   },
   {
     title: 'Data Analysis & Reporting',
-    desc: 'Transforming data into meaningful insights.',
+    desc: 'Transforming data into meaningful insights using Excel, Power BI, PostgreSQL, Python, and reporting techniques.',
     projects: '58 Projects',
+    skills: [
+      'Excel',
+      'Power BI',
+      'PostgreSQL',
+      'Python',
+      'Reporting',
+    ],
     icon: <BarChart3 className='h-6 w-6 text-white' />,
-    skills: ['Data Cleaning', 'Data Visualization', 'Statistical Analysis'],
   },
   {
     title: 'Front-End Development',
-    desc: 'Building responsive and user-friendly interfaces.',
+    desc: 'Building responsive and user-friendly web interfaces using HTML, CSS, JavaScript, React, and Tailwind CSS.',
     projects: '21 Projects',
+    skills: [
+      'HTML',
+      'CSS',
+      'JavaScript',
+      'React',
+      'Tailwind CSS',
+    ],
     icon: <Code2 className='h-6 w-6 text-white' />,
-    skills: ['HTML', 'CSS', 'JavaScript', 'React', 'Tailwind CSS'],
   },
-];
+]
 
 const statsData: StatsType[] = [
   {

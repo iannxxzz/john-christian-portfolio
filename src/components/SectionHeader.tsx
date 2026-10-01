@@ -1,19 +1,29 @@
 import { motion } from "motion/react"
-
 import { fadeUp } from "@/lib/animations"
-
 import { SparkleIcon } from "lucide-react"
+    export const SectionHeader = ({
+        title,
+        subtitle,
+    }: {
+        title: string
+        subtitle: string
+    }) => {
+        return (
+            <>
+                <motion.p
+                    variants={fadeUp}
+                    className="flex w-32 items-center justify-center gap-2 rounded-sm border border-neutral-600 py-1"
+                >
+                    <SparkleIcon size={15} />
+                    {subtitle}
+                </motion.p>
 
-export const SectionHeader = ({title, subtitle}: {title: string; subtitle: string;}) => {
-    return (
-        <>
-        <motion.p variants={fadeUp} className="flex items-center justify-center py-1 gap-2 border border-neutral-600 rounded-sm w-32">
-            <SparkleIcon size={15} /> {subtitle}
-        </motion.p>
-
-        <motion.h2 variants={fadeUp} className="text-4xl font-bold capitalize mt-5 md:max-w-3xl">
-            {title}
-        </motion.h2>
-        </>
-    )
-}
+                <motion.h2
+                    variants={fadeUp}
+                    className="mt-5 text-4xl font-bold capitalize md:max-w-3xl"
+                >
+                    {title}
+                </motion.h2>
+            </>
+        )
+    }

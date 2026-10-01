@@ -40,14 +40,14 @@ export const Profile = () => {
             <div className="flex flex-col gap-6">
 
                 {/* Header */}
-                <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3">
+                <div className="flex items-start justify-between gap-3">
 
                     <div>
                         <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white">
                             John Christian
                         </h1>
 
-                        <p className="mt-2 text-[5px] sm:text-sm text-neutral-400">
+                        <p className="mt-2 text-xs sm:text-sm text-neutral-400">
                             Developer • QA • Data Analyst
                         </p>
                     </div>

@@ -40,29 +40,34 @@ export const Projects = () => {
             subtitle="Projects"
             title="My Featured Projects"
         />
-
-        {/* Filter Bar */}
-        <div className="mt-10 flex justify-start">
-            <div
-            className="flex flex-wrap gap-2 rounded-2xl border border-neutral-800 bg-neutral-900/50 p-2 backdrop-blur-sm"
-            >
-            {filters.map((filter) => (
-                <button
-                key={filter}
-                onClick={() => setActiveFilter(filter)}
-                className={`rounded-xl px-3 py-1.5 sm:px-1 sm:py-1 md:px-5 md:py-2.5 text-xs sm:text-xs font-medium transition-all duration-300 whitespace-nowrap
-                ${
-                    activeFilter === filter
-                    ? "bg-primary text-black shadow-lg shadow-primary/20"
-                    : "border border-neutral-700 bg-neutral-900 text-neutral-400 hover:border-primary hover:text-primary"
-                }
-                `}
-                >
-                {filter}
-                </button>
-            ))}
+        
+            {/* Filter Bar */}
+            <div className="mt-10 flex justify-start">
+                <div className="flex flex-wrap gap-2 rounded-2xl border border-neutral-800 bg-neutral-900/50 p-2 backdrop-blur-sm">
+                    {filters.map((filter) => (
+                        <button
+                            key={filter}
+                            onClick={() => setActiveFilter(filter)}
+                            className={`
+                                rounded-xl
+                                px-3 py-1.5
+                                text-xs
+                                font-medium
+                                transition-all
+                                duration-300
+                                whitespace-nowrap
+                                ${
+                                    activeFilter === filter
+                                        ? "bg-primary text-black shadow-lg shadow-primary/20"
+                                        : "border border-neutral-700 bg-neutral-900 text-neutral-400 hover:border-primary hover:text-primary"
+                                }
+                            `}
+                        >
+                            {filter}
+                        </button>
+                    ))}
+                </div>
             </div>
-        </div>
 
         {/* Animated Grid */}
         <motion.div
