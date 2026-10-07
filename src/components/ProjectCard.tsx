@@ -60,7 +60,7 @@ import type { ProjectType } from "@/types"
         font-medium
         text-primary
         backdrop-blur-md
-        sm:text-sm
+        
       "
     >
       {category}
