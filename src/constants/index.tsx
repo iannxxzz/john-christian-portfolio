@@ -84,6 +84,25 @@ const projectsData: ProjectType[] = [
     projectLink: 'https://food-biteiq.netlify.app/',
     featured: true,
   },
+   {
+    imgSrc: '/images/testflow-sample.png',
+    title: 'TestFlow QA Management Platform',
+    description:
+      'A full-stack test management application designed to streamline QA workflows through test case management, test execution, defect tracking, and real-time project analytics.',
+    category: 'Full-Stack',
+    tags: ['React', 'Tailwind', 'QA Management'],
+    projectLink: 'https://food-biteiq.netlify.app/',
+    screenshots: [
+    '/images/testflow-login.png',
+    '/images/testflow-sample.png',
+    '/images/testflow-project.png',
+    '/images/testflow-testcases.png',
+    '/images/testflow-testruns.png',
+    '/images/testflow-settings.png',
+    // Add the remaining TestFlow app screenshots here
+    ],
+      featured: true,
+    },
   {
     imgSrc: '/images/data-page.png',
     title: 'Hospital Dashboard',

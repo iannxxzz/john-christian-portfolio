@@ -1,0 +1,202 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0a0a0a" />
+  <title>Project Screenshots</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: #0a0a0a;
+      color: #fff;
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      padding: 24px;
+      text-align: center;
+      border-bottom: 1px solid #262626;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(1.25rem, 4vw, 2rem);
+    }
+
+    main {
+      width: min(1100px, 100%);
+      margin: auto;
+      padding: 24px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 20px;
+    }
+
+
+.image-container {
+  width: 100%;
+  height: 70vh;
+  min-height: 300px;
+  max-height: 750px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #262626;
+  border-radius: 16px;
+  overflow: hidden;
+  background: #111;
+}
+
+#screenshot {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+
+    #status {
+      color: #a3a3a3;
+      text-align: center;
+      font-size: 14px;
+    }
+
+    .controls {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    button {
+      border: 1px solid #404040;
+      background: #171717;
+      color: white;
+      padding: 12px 20px;
+      border-radius: 10px;
+      font-size: 14px;
+      cursor: pointer;
+    }
+
+    button:hover:not(:disabled) {
+      background: #262626;
+      border-color: #a3a3a3;
+    }
+
+    button:disabled {
+      opacity: 0.35;
+      cursor: not-allowed;
+    }
+
+    footer {
+      padding: 20px;
+      text-align: center;
+      color: #737373;
+      font-size: 12px;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1 id="project-title">Project Screenshots</h1>
+  </header>
+
+  <main>
+    <div class="image-container">
+      <img id="screenshot" alt="Project screenshot" />
+    </div>
+
+    <p id="status" aria-live="polite">Loading screenshots...</p>
+
+    <div class="controls">
+      <button id="previous" type="button">← Previous</button>
+      <button id="next" type="button">Next →</button>
+    </div>
+  </main>
+
+  <footer>Portfolio Project Showcase</footer>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const title = params.get('title') || 'Project Screenshots';
+    const images = params.getAll('image');
+
+    const titleElement = document.getElementById('project-title');
+    const screenshot = document.getElementById('screenshot');
+    const status = document.getElementById('status');
+    const previous = document.getElementById('previous');
+    const next = document.getElementById('next');
+
+    let currentIndex = 0;
+
+    document.title = title;
+    titleElement.textContent = title;
+
+    function showScreenshot() {
+      if (images.length === 0) {
+        screenshot.hidden = true;
+        status.textContent = 'No screenshots have been added yet.';
+        previous.disabled = true;
+        next.disabled = true;
+        return;
+      }
+
+      screenshot.hidden = false;
+      screenshot.src = images[currentIndex];
+      screenshot.alt = `${title} screenshot ${currentIndex + 1}`;
+
+      status.textContent =
+        `Screenshot ${currentIndex + 1} of ${images.length}`;
+
+      previous.disabled = currentIndex === 0;
+      next.disabled = currentIndex === images.length - 1;
+    }
+
+    previous.addEventListener('click', () => {
+      if (currentIndex > 0) {
+        currentIndex--;
+        showScreenshot();
+      }
+    });
+
+    next.addEventListener('click', () => {
+      if (currentIndex < images.length - 1) {
+        currentIndex++;
+        showScreenshot();
+      }
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'ArrowLeft' && currentIndex > 0) {
+        currentIndex--;
+        showScreenshot();
+      }
+
+      if (event.key === 'ArrowRight' && currentIndex < images.length - 1) {
+        currentIndex++;
+        showScreenshot();
+      }
+    });
+
+    screenshot.addEventListener('error', () => {
+      status.textContent = 'Unable to load this screenshot. Check the image path.';
+    });
+
+    showScreenshot();
+  </script>
+</body>
+</html>

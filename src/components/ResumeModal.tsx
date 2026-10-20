@@ -81,7 +81,7 @@ Resume Preview </h2>
         {/* Desktop */}
         {!isMobile && (
           <iframe
-            src="/JCAtienza_Resume.pdf"
+            src="/JohnChristian_Atienza_Resume.pdf"
             title="Resume"
             className="h-[75vh] w-full bg-white"
           />
@@ -102,7 +102,7 @@ Resume Preview </h2>
             </p>
 
             <a
-              href="/JCAtienza_Resume.pdf"
+              href="/JohnChristian_Atienza_Resume.pdf"
               target="_blank"
               rel="noopener noreferrer"
               className="rounded-xl bg-primary px-5 py-3 font-medium text-black">
@@ -114,7 +114,7 @@ Resume Preview </h2>
         {/* Footer */}
         <div className="flex justify-end border-t border-neutral-800 p-4">
           <a
-            href="/JCAtienza_Resume.pdf"
+            href="/JohnChristian_Atienza_Resume.pdf"
             download
             className="inline-flex items-center gap-2 rounded-xl bg-primary px-5 py-2.5 font-medium text-black transition-transform hover:scale-105"
           >

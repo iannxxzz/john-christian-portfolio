@@ -8,6 +8,7 @@ export type ProjectType = {
   tags: string[]
   projectLink: string
   featured: boolean
+  screenshots?: string[]
 };
 
 export type ExperienceType = {
